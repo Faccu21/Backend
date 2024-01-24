@@ -57,7 +57,7 @@ router.put('/products/:id', async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         const updatedProduct = req.body;
-        await manager.updateProduct(id, updatedProduct);
+        await manager.updateProduct(id, updatedProduct, res);
         res.send('Producto actualizado exitosamente');
     } catch (error) {
         console.error('Error al actualizar producto:', error);
@@ -68,7 +68,7 @@ router.put('/products/:id', async (req, res) => {
 router.delete('/products/:id', async (req, res) => {
     try {
         const id = parseInt(req.params.id);
-        await manager.deleteProduct(id);
+        await manager.deleteProduct(id, res);
         res.send('Producto eliminado exitosamente');
     } catch (error) {
         console.error('Error al eliminar producto:', error);

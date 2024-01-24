@@ -4,89 +4,109 @@
     "title": "JPG",
     "description": "Le Beau",
     "price": 100,
-    "img": "sin imagen",
+    "thumbnails": [],
     "code": "ab123",
-    "stock": 14
+    "stock": 14,
+    "category": "perfume",
+    "status": true
   },
   {
     "id": 2,
     "title": "JPG",
     "description": "Le Male",
     "price": 70,
-    "img": "sin imagen",
+    "thumbnails": [],
     "code": "ab124",
-    "stock": 10
+    "stock": 10,
+    "category": "perfume",
+    "status": true
   },
   {
     "id": 3,
     "title": "Versace",
     "description": "Eros",
     "price": 70,
-    "img": "sin imagen",
+    "thumbnails": [],
     "code": "ab126",
-    "stock": 16
+    "stock": 16,
+    "category": "perfume",
+    "status": true
   },
   {
     "id": 4,
     "title": "DyG",
     "description": "Light Blue",
     "price": 170,
-    "img": "sin imagen",
+    "thumbnails": [],
     "code": "ab127",
-    "stock": 5
+    "stock": 5,
+    "category": "perfume",
+    "status": true
   },
   {
     "id": 5,
     "title": "YSL",
     "description": "Y",
     "price": 70,
-    "img": "sin imagen",
+    "thumbnails": [],
     "code": "ab128",
-    "stock": 10
+    "stock": 10,
+    "category": "perfume",
+    "status": true
   },
   {
     "id": 6,
     "title": "Paco Rabbane",
     "description": "One Million",
     "price": 70,
-    "img": "sin imagen",
+    "thumbnails": [],
     "code": "ab129",
-    "stock": 10
+    "stock": 10,
+    "category": "perfume",
+    "status": true
   },
   {
     "id": 7,
     "title": "Ralph Lauren",
     "description": "Polo Red",
     "price": 70,
-    "img": "sin imagen",
+    "thumbnails": [],
     "code": "ab130",
-    "stock": 10
+    "stock": 10,
+    "category": "perfume",
+    "status": true
   },
   {
     "id": 8,
     "title": "Armani",
     "description": "Stronger With You",
     "price": 70,
-    "img": "sin imagen",
+    "thumbnails": [],
     "code": "ab131",
-    "stock": 10
+    "stock": 10,
+    "category": "perfume",
+    "status": true
   },
   {
     "id": 9,
     "title": "Azzaro",
     "description": "Chrome",
     "price": 70,
-    "img": "sin imagen",
+    "thumbnails": [],
     "code": "ab132",
-    "stock": 10
+    "stock": 10,
+    "category": "perfume",
+    "status": true
   },
   {
     "id": 10,
     "title": "Paco Rabbane",
     "description": "Invictus",
     "price": 55,
-    "img": "sin imagen",
+    "thumbnails": [],
     "code": "ab133",
-    "stock": 10
+    "stock": 10,
+    "category": "perfume",
+    "status": true
   }
 ]
