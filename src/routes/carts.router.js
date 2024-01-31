@@ -10,7 +10,7 @@ router.post("/", async (req, res) => {
         res.send('Carrito creado correctamente');
     } catch (error) {
         console.error("Error al crear un nuevo carrito", error);
-        res.status(500).send('Error interno del servidor');
+        res.status(500).send(`Error interno del servidor: ${error.message}`);
     }
 });
 
@@ -20,7 +20,7 @@ router.get("/carts", async (req, res) => {
         res.json(carts);
     } catch (error) {
         console.error("Error al obtener los carritos", error);
-        res.status(500).send('Error interno del servidor');
+        res.status(500).send(`Error interno del servidor: ${error.message}`);
     }
 });
 
@@ -40,7 +40,7 @@ router.post("/:cid/product/:pid", async (req, res) => {
         }
     } catch (error) {
         console.error('Error al agregar producto al carrito:', error);
-        res.status(500).send('Error interno del servidor');
+        res.status(500).send(`Error interno del servidor: ${error.message}`);
     }
 });
 

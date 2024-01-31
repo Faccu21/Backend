@@ -49,33 +49,33 @@ class ProductManager {
 
   getProducts() {
     if (this.products.length === 0) {
-        const errorMessage = "No hay productos disponibles";
-        console.error(errorMessage);
-        return res.status(404).json({ error: errorMessage });
+      const errorMessage = "No hay productos disponibles";
+      console.error(errorMessage);
+      return res.status(404).json({ error: errorMessage });
     }
 
     console.log(this.products);
     return this.products;
-}
+  }
 
-async getProductById(id) {
-  try {
+  async getProductById(id) {
+    try {
       const arrayProducts = await this.readFolder();
       const wanted = arrayProducts.find(item => item.id === id);
       if (!wanted) {
-          const errorMessage = "Producto no encontrado";
-          console.error(errorMessage);
-          return res.status(404).json({ error: errorMessage });
+        const errorMessage = "Producto no encontrado";
+        console.error(errorMessage);
+        return res.status(404).json({ error: errorMessage });
       } else {
-          console.log("Producto encontrado");
-          return wanted;
+        console.log("Producto encontrado");
+        return wanted;
       }
-  } catch (error) {
+    } catch (error) {
       const errorMessage = "Error al leer archivo";
       console.error(errorMessage, error);
       return res.status(500).json({ error: errorMessage });
+    }
   }
-}
 
   async readFolder() {
     try {
@@ -96,55 +96,56 @@ async getProductById(id) {
   }
 
 
+
   async updateProduct(id, refreshProduct, res) {
     try {
-        const arrayProducts = await this.readFolder();
-        const index = arrayProducts.findIndex(item => item.id === id);
+      const arrayProducts = await this.readFolder();
+      const index = arrayProducts.findIndex(item => item.id === id);
 
-        if (index !== -1) {
-            const updatedProduct = { id, ...refreshProduct };
+      if (index !== -1) {
+        const updatedProduct = { id, ...refreshProduct };
 
-            const requiredFields = ["title", "description", "price", "code", "stock", "category", "status"];
-            const hasMissingFields = requiredFields.some(field => updatedProduct[field] === undefined);
+        const requiredFields = ["title", "description", "price", "code", "stock", "category", "status"];
+        const hasMissingFields = requiredFields.some(field => updatedProduct[field] === undefined);
 
-            if (hasMissingFields) {
-                const errorMessage = "Error: Campos obligatorios faltantes al actualizar el producto";
-                console.error(errorMessage);
-                return res.status(400).json({ error: errorMessage });
-            }
-
-            arrayProducts.splice(index, 1, { id, ...refreshProduct }); 
-            await this.saveFile(arrayProducts);
-
-            res.json({ message: "Producto actualizado correctamente" });
-        } else {
-            console.log("No se encontró el producto");
-            res.status(404).json({ error: "No se encontró el producto" });
+        if (hasMissingFields) {
+          const errorMessage = "Error: Campos obligatorios faltantes al actualizar el producto";
+          console.error(errorMessage);
+          return res.status(400).json({ error: errorMessage });
         }
+
+        arrayProducts.splice(index, 1, { id, ...refreshProduct });
+        await this.saveFile(arrayProducts);
+
+        res.json({ message: "Producto actualizado correctamente" });
+      } else {
+        console.log("No se encontró el producto");
+        res.status(404).json({ error: "No se encontró el producto" });
+      }
     } catch (error) {
-        console.log("Error al actualizar", error);
-        res.status(500).json({ error: "Error interno del servidor" });
+      console.log("Error al actualizar", error);
+      res.status(500).json({ error: "Error interno del servidor" });
     }
   }
 
 
   async deleteProduct(id, res) {
     try {
-        const arrayProducts = await this.readFolder();
-        const newArray = arrayProducts.filter(item => item.id !== id);
+      const arrayProducts = await this.readFolder();
+      const newArray = arrayProducts.filter(item => item.id !== id);
 
-        if (newArray.length < arrayProducts.length) {
-            await this.saveFile(newArray);
-            res.json({ message: "Producto eliminado correctamente" });
-        } else {
-            console.log("No se encontró el producto");
-            res.status(404).json({ error: "No se encontró el producto" });
-        }
+      if (newArray.length < arrayProducts.length) {
+        await this.saveFile(newArray);
+        res.json({ message: "Producto eliminado correctamente" });
+      } else {
+        console.log("No se encontró el producto");
+        res.status(404).json({ error: "No se encontró el producto" });
+      }
     } catch (error) {
-        console.log("Error al eliminar el producto", error);
-        res.status(500).json({ error: "Error interno del servidor" });
+      console.log("Error al eliminar el producto", error);
+      res.status(500).json({ error: "Error interno del servidor" });
     }
-}
+  }
 
 
 }

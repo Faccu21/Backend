@@ -16,20 +16,20 @@ class CartManager {
 
     async readCart() {
         try {
-            const answer = await fs.readFileSync(this.path, "utf-8");
+            const answer = await fs.readFile(this.path, "utf-8");
             let arrayCarts = JSON.parse(answer);
-
+    
             this.ultId = Math.max(...arrayCarts.map(cart => cart.id), this.ultId);
             if (this.ultId === 0) {
                 this.ultId = 1;
             } 
             return arrayCarts;
         } catch (error) {
-            console.error("Error al leer un archivo", error);
+            console.error("Error al leer o analizar el archivo", error);
             throw error;
         }
     }
-
+    
     async addCart() {
         try {
             let cartArray = await this.readCart();
